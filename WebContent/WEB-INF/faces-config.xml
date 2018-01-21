@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+	
+	<managed-bean>
+		<managed-bean-name>databaseAccessInformationBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.model.DatabaseAccessInformationBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>databaseAccessBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.model.DatabaseAccessBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>databaseAccessInformationBean</property-name>
+			<property-class>edu.uic.ids517.model.DatabaseAccessInformationBean</property-class>
+			<value>#{databaseAccessInformationBean}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>fileActionBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.model.FileActionBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>databaseAccessBean</property-name>
+			<property-class>edu.uic.ids517.model.DatabaseAccessBean</property-class>
+			<value>#{databaseAccessBean}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>descriptiveAnalysisBean</property-name>
+			<property-class>edu.uic.ids517.model.DescriptiveAnalysisBean</property-class>
+			<value>#{descriptiveAnalysisBean}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>descriptiveAnalysisBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.model.DescriptiveAnalysisBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>databaseAccessBean</property-name>
+			<property-class>edu.uic.ids517.model.DatabaseAccessBean</property-class>
+			<value>#{databaseAccessBean}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>graphicalAnalysisBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.model.GraphicalAnalysisBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>databaseAccessBean</property-name>
+			<property-class>edu.uic.ids517.model.DatabaseAccessBean</property-class>
+			<value>#{databaseAccessBean}</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>regressionAnalysisBean</managed-bean-name>
+		<managed-bean-class>edu.uic.ids517.model.RegressionAnalysisBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>databaseAccessBean</property-name>
+			<property-class>edu.uic.ids517.model.DatabaseAccessBean</property-class>
+			<value>#{databaseAccessBean}</value>
+		</managed-property>
+	</managed-bean>
+		
+	<navigation-rule>
+		<display-name>Login</display-name>
+		<from-view-id>/login.jsp</from-view-id>
+		<navigation-case><from-outcome>Success</from-outcome>
+			<to-view-id>/databaseAccess.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case><from-outcome>Fail</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>TERMINATE SUCCESS</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>TERMINATE FAIL</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>FileUpload</display-name>
+		<from-view-id>/fileUpload.jsp</from-view-id>
+		<navigation-case><from-outcome>FileSuccess</from-outcome>
+			<to-view-id>/fileUpload.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case><from-outcome>FileError</from-outcome>
+			<to-view-id>/fileUpload.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>DatabaseAccess</display-name>
+		<from-view-id>/databaseAccess.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>LOGOUT SUCCESS</from-outcome>
+			<to-view-id>/logout.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>LOGOUT FAIL</from-outcome>
+			<to-view-id>/databaseAccess.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>Reset</from-outcome>
+			<to-view-id>/stats.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>RegressionReset</from-outcome>
+			<to-view-id>/regression.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>PlotReset</from-outcome>
+			<to-view-id>/chart.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>FileReset</from-outcome>
+			<to-view-id>/fileUpload.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>Statistics</display-name>
+		<from-view-id>/stats.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>DescReset</from-outcome>
+			<to-view-id>/databaseAccess.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<display-name>Regression</display-name>
+		<from-view-id>/regression.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>RegressionReset</from-outcome>
+			<to-view-id>/databaseAccess.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	
+	<navigation-rule>
+		<display-name>Scatter Plot</display-name>
+		<from-view-id>/chart.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>PlotReset</from-outcome>
+			<to-view-id>/databaseAccess.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	
+	<navigation-rule>
+		<display-name>File Upload</display-name>
+		<from-view-id>/fileUpload.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>FileReset</from-outcome>
+			<to-view-id>/databaseAccess.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	
+</faces-config>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15108877495020" configfile="/f17g307/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="Login" x="122" y="370" id="pf15108893151131" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" outlinks="pf15108893151132 pf15108919248595 pf15121746247470 pf15121746247471" inlinks="pf15108919248595 pf15121746247471" path="/login.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="DatabaseAccess" x="338" y="178" id="pf15108893151133" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15121746247482 pf15121746247483 pf15124630234902 pf15124673193120 pf15124673397701 pf15124673594922" inlinks="pf15108893151132 pf15121746247483 pf15124624203850 pf15124634340963 pf15124637820025 pf15124640619647" path="/databaseAccess.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="FileUpload" x="122" y="754" id="pf15112529128360" referenceLink="//@navigationRule.2/@navigationCase.5/@toViewId|" outlinks="pf15112529128361 pf15112529128362 pf15124640619647" inlinks="pf15112529128361 pf15112529128362 pf15124673594922" path="/fileUpload.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="index" x="338" y="562" id="pf15121746247484" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf15121746247470" path="/index.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="logout" x="554" y="178" id="pf15121746247485" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf15121746247482" path="/logout.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="Statistics" id="pf15124624203851" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15124624203850" inlinks="pf15124630234902" path="/stats.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="Regression" id="pf15124634340964" referenceLink="//@navigationRule.2/@navigationCase.3/@toViewId|" outlinks="pf15124634340963" inlinks="pf15124673193120" path="/regression.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="Scatter Plot" id="pf15124637820026" referenceLink="//@navigationRule.2/@navigationCase.4/@toViewId|" outlinks="pf15124637820025" inlinks="pf15124673397701" path="/chart.jsp"/>
+  <links id="pf15108893151132" target="pf15108893151133" source="pf15108893151131" outcome="Success"/>
+  <links id="pf15121746247470" target="pf15121746247484" source="pf15108893151131" outcome="TERMINATE SUCCESS"/>
+  <links id="pf15121746247482" target="pf15121746247485" source="pf15108893151133" outcome="LOGOUT SUCCESS"/>
+  <links id="pf15108919248595" target="pf15108893151131" source="pf15108893151131" outcome="Fail">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf15112529128361" target="pf15112529128360" source="pf15112529128360" outcome="FileSuccess">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf15112529128362" target="pf15112529128360" source="pf15112529128360" outcome="FileError">
+    <bendPoints d1Height="-66" d2Height="-66"/>
+    <bendPoints d1Width="-94" d1Height="-66" d2Width="-94" d2Height="-66"/>
+    <bendPoints d1Width="-94" d2Width="-94"/>
+  </links>
+  <links id="pf15121746247471" target="pf15108893151131" source="pf15108893151131" outcome="TERMINATE FAIL">
+    <bendPoints d1Height="-66" d2Height="-66"/>
+    <bendPoints d1Width="-94" d1Height="-66" d2Width="-94" d2Height="-66"/>
+    <bendPoints d1Width="-94" d2Width="-94"/>
+  </links>
+  <links id="pf15121746247483" target="pf15108893151133" source="pf15108893151133" outcome="LOGOUT FAIL">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf15124624203850" target="pf15108893151133" source="pf15124624203851" outcome="DescReset"/>
+  <links id="pf15124630234902" target="pf15124624203851" source="pf15108893151133" outcome="Reset"/>
+  <links id="pf15124634340963" target="pf15108893151133" source="pf15124634340964" outcome="RegressionReset"/>
+  <links id="pf15124637820025" target="pf15108893151133" source="pf15124637820026" outcome="PlotReset"/>
+  <links id="pf15124640619647" target="pf15108893151133" source="pf15112529128360" outcome="FileReset"/>
+  <links id="pf15124673193120" target="pf15124634340964" source="pf15108893151133" outcome="RegressionReset"/>
+  <links id="pf15124673397701" target="pf15124637820026" source="pf15108893151133" outcome="PlotReset"/>
+  <links id="pf15124673594922" target="pf15112529128360" source="pf15108893151133" outcome="FileReset"/>
+</pageflow:Pageflow>
